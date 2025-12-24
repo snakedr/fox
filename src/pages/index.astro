@@ -1,0 +1,276 @@
+---
+// Clean logic, minimal imports
+const title = "Green & Tasty | Здоровая еда";
+---
+
+<html lang="ru">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>{title}</title>
+		<meta name="description" content="Вкусная и здоровая пища, меню и калькулятор калорий." />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<header class="hero">
+			<nav>
+				<div class="logo">G&T</div>
+				<ul class="links">
+					<li><a href="#menu">Меню</a></li>
+					<li><a href="#calculator">Калькулятор</a></li>
+				</ul>
+			</nav>
+			<div class="hero-content">
+				<h1>Ешь чисто. <br /> Живи ярко.</h1>
+				<p>Органические ингредиенты и незабываемый вкус.</p>
+				<button onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">
+					Смотреть меню
+				</button>
+			</div>
+		</header>
+
+		<main id="menu">
+			<h2>Наш Выбор</h2>
+			<div class="food-grid">
+				<article class="card">
+					<img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&q=80&fit=crop" alt="Салат" loading="lazy" />
+					<div class="info">
+						<h3>Зеленый Боул</h3>
+						<p>550 ₽</p>
+					</div>
+				</article>
+				<article class="card">
+					<img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&q=80&fit=crop" alt="Авокадо Тост" loading="lazy" />
+					<div class="info">
+						<h3>Авокадо Тост</h3>
+						<p>450 ₽</p>
+					</div>
+				</article>
+				<article class="card">
+					<img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=500&q=80&fit=crop" alt="Смузи" loading="lazy" />
+					<div class="info">
+						<h3>Ягодный Детокс</h3>
+						<p>350 ₽</p>
+					</div>
+				</article>
+				<article class="card">
+					<img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=500&q=80&fit=crop" alt="Куриная грудка гриль" loading="lazy" />
+					<div class="info">
+						<h3>Чикен Гриль</h3>
+						<p>620 ₽</p>
+					</div>
+				</article>
+				<article class="card">
+					<img src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=500&q=80&fit=crop" alt="Киноа боул" loading="lazy" />
+					<div class="info">
+						<h3>Киноа Power</h3>
+						<p>490 ₽</p>
+					</div>
+				</article>
+				<article class="card">
+					<img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=500&q=80&fit=crop" alt="Лосось с овощами" loading="lazy" />
+					<div class="info">
+						<h3>Лосось & Спаржа</h3>
+						<p>850 ₽</p>
+					</div>
+				</article>
+			</div>
+		</main>
+
+		<section id="calculator" class="calc-section">
+			<div class="calc-wrapper">
+				<h2>Калькулятор Калорий</h2>
+				<p class="calc-intro">Расчитайте свою суточную норму по формуле Миффлина-Сан Жеора.</p>
+				
+				<div class="calc-form">
+					<div class="form-group radio-group">
+						<label>Пол:</label>
+						<div>
+							<input type="radio" id="male" name="gender" value="male" checked>
+							<label for="male">М</label>
+							<input type="radio" id="female" name="gender" value="female">
+							<label for="female">Ж</label>
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div class="form-group">
+							<label for="age">Возраст (лет):</label>
+							<input type="number" id="age" min="15" max="100" placeholder="30">
+						</div>
+						<div class="form-group">
+							<label for="weight">Вес (кг):</label>
+							<input type="number" id="weight" min="30" max="200" placeholder="70">
+						</div>
+						<div class="form-group">
+							<label for="height">Рост (см):</label>
+							<input type="number" id="height" min="100" max="250" placeholder="175">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="activity">Активность:</label>
+						<select id="activity">
+							<option value="1.2">Минимальная (сидячая работа)</option>
+							<option value="1.375">Слабая (тренировки 1-3 раза/нед)</option>
+							<option value="1.55" selected>Средняя (тренировки 3-5 раз/нед)</option>
+							<option value="1.725">Высокая (тренировки 6-7 раз/нед)</option>
+							<option value="1.9">Экстремальная (спортсмены)</option>
+						</select>
+					</div>
+
+					<button id="calc-btn">Рассчитать норму</button>
+					
+					<div id="result-area" class="hidden">
+						Ваша норма: <span id="calories-result">0</span> ккал/день
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<footer>
+			<p>&copy; 2025 Green & Tasty. Just good food.</p>
+		</footer>
+
+		<style>
+			:root {
+				--bg: #f9f9f9;
+				--text: #2c3e50;
+				--primary: #4a7c59; /* Natural Green */
+				--accent: #e67e22; /* Carrot Orange */
+				--card-bg: #ffffff;
+			}
+
+			* { box-sizing: border-box; margin: 0; padding: 0; }
+			html { scroll-behavior: smooth; }
+			body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+			/* --- Hero --- */
+			.hero {
+				height: 85vh;
+				min-height: 500px;
+				background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=1400&q=85') center/cover no-repeat;
+				color: white;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				position: relative;
+			}
+			.hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 1rem; font-weight: 800; }
+			.hero p { font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9; }
+			
+			button {
+				background: var(--primary); color: white; border: none; padding: 1rem 2.5rem;
+				font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;
+				border-radius: 50px;
+			}
+			button:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(230, 126, 34, 0.3); }
+
+			/* --- Nav --- */
+			nav { position: absolute; top: 0; width: 100%; padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 10; }
+			.logo { font-weight: 800; font-size: 1.5rem; color: white; letter-spacing: -1px; }
+			.links { list-style: none; display: flex; gap: 2rem; }
+			.links a { color: white; text-decoration: none; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.2s; }
+			.links a:hover { color: var(--accent); }
+
+			/* --- Sections General --- */
+			main, .calc-section { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; }
+			h2 { text-align: center; margin-bottom: 1rem; font-size: 2.5rem; color: var(--text); font-weight: 800; }
+			
+			/* --- Menu Grid --- */
+			.food-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+				gap: 2.5rem;
+				margin-top: 3rem;
+			}
+			.card { background: var(--card-bg); border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+			.card:hover { transform: translateY(-7px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+			.card img { width: 100%; height: 220px; object-fit: cover; }
+			.info { padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+			.info h3 { font-size: 1.1rem; margin: 0; }
+			.info p { color: var(--primary); font-weight: 800; font-size: 1.2rem; }
+
+			/* --- Calculator --- */
+			.calc-section { background: white; border-radius: 20px; margin: 4rem auto; box-shadow: 0 5px 25px rgba(0,0,0,0.03); padding: 4rem 2rem;}
+			.calc-wrapper { max-width: 600px; margin: 0 auto; text-align: center; }
+			.calc-intro { margin-bottom: 2.5rem; color: #666; }
+			
+			.calc-form { text-align: left; display: flex; flex-direction: column; gap: 1.5rem; }
+			.form-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+			.form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+			.form-group label { font-weight: 600; font-size: 0.9rem; color: var(--text); }
+			.radio-group div { display: flex; align-items: center; gap: 0.5rem; }
+			
+			input[type="number"], select {
+				padding: 0.8rem; border: 2px solid #eee; border-radius: 8px; font-size: 1rem; font-family: inherit; transition: border-color 0.2s;
+			}
+			input[type="number"]:focus, select:focus { outline: none; border-color: var(--primary); }
+			
+			#calc-btn { width: 100%; margin-top: 1rem; }
+			
+			#result-area {
+				margin-top: 2rem; padding: 1.5rem; background: #e8f5e9; border-radius: 12px;
+				text-align: center; font-size: 1.2rem; color: var(--primary); font-weight: 600;
+				opacity: 1; transition: opacity 0.5s ease;
+			}
+			#result-area.hidden { opacity: 0; pointer-events: none; }
+			#calories-result { font-size: 1.8rem; font-weight: 800; }
+
+			footer { text-align: center; padding: 2rem; background: var(--text); color: rgba(255,255,255,0.6); margin-top: auto; }
+			
+			@media (max-width: 600px) {
+				.links { display: none; } /* Hide nav links on mobile for simplicity */
+				.hero h1 { font-size: 2.8rem; }
+				.form-row { grid-template-columns: 1fr; }
+			}
+		</style>
+
+		<script is:inline>
+			// Vanilla JS Calorie Calculator Logic
+			const calcBtn = document.getElementById('calc-btn');
+			const resultArea = document.getElementById('result-area');
+			const resultSpan = document.getElementById('calories-result');
+
+			calcBtn.addEventListener('click', function() {
+				// 1. Get Input Values
+				const gender = document.querySelector('input[name="gender"]:checked').value;
+				const age = parseInt(document.getElementById('age').value);
+				const weight = parseFloat(document.getElementById('weight').value);
+				const height = parseFloat(document.getElementById('height').value);
+				const activityMultiplier = parseFloat(document.getElementById('activity').value);
+
+				// 2. Basic Validation
+				if (!age || !weight || !height || age <= 0 || weight <= 0 || height <= 0) {
+					alert("Пожалуйста, заполните все поля корректными положительными числами.");
+					return;
+				}
+
+				// 3. Calculate BMR (Mifflin-St Jeor Equation)
+				let bmr;
+				// Формула: (10 x вес в кг) + (6.25 x рост в см) – (5 x возраст в годах) + (5 для мужчин / -161 для женщин)
+				if (gender === 'male') {
+					bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
+				} else {
+					bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
+				}
+
+				// 4. Calculate Total Daily Energy Expenditure (TDEE)
+				const tdee = Math.round(bmr * activityMultiplier);
+
+				// 5. Display Result
+				resultSpan.textContent = tdee;
+				resultArea.classList.remove('hidden');
+				
+				// Smooth scroll to result on mobile if needed
+				if(window.innerWidth < 600) {
+					resultArea.scrollIntoView({behavior: 'smooth', block: 'nearest'});
+				}
+			});
+		</script>
+	</body>
+</html>
